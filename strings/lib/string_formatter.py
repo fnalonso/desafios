@@ -10,7 +10,7 @@ def format_text(text, line_size, justify):
     :return: str contendo o texto formatado.
     """
     # Remove as quebras de linha contidas no texto
-    clean_text = re.sub(r'\r\n', '', text)
+    clean_text = re.sub(r'\r?\n', '', text)
     current_line_size = 0
     formatted_lines = []
     formatted_line = []
