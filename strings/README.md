@@ -1,35 +1,54 @@
-# Desafio 1: Strings
+# Formatador de textos
 
-Após ler o coding style do kernel Linux, você descobre a mágica que é
-ter linhas de código com no máximo 80 caracteres cada uma.
+## Informativo
 
-Assim, você decide que de hoje em diante seus e-mails enviados também
-seguirão um padrão parecido e resolve desenvolver um plugin para te ajudar
-com isso. Contudo, seu plugin aceitará no máximo 40 caracteres por linha.
+O script foi implementado utilizando a versão 3.7.4 do python e o ambiente virtual é o pipenv. Para 
+utiliza-lo, após o checkout do repositório, deve-se executar os comandos abaixo dentro da pasta do projeto:
 
-Implemente uma função que receba:
-1. um texto qualquer
-2. um limite de comprimento
+    pipenv install
 
-e seja capaz de gerar os outputs dos desafios abaixo.
+E para ativar o ambiente virtual:
 
-## Exemplo input
+    pipenv shell
 
-`In the beginning God created the heavens and the earth. Now the earth was formless and empty, darkness was over the surface of the deep, and the Spirit of God was hovering over the waters.`
 
-`And God said, "Let there be light," and there was light. God saw that the light was good, and he separated the light from the darkness. God called the light "day," and the darkness he called "night." And there was evening, and there was morning - the first day.`
+## Utilização
 
-O texto deve ser parametrizável e se quiser, pode utilizar um texto de input de sua preferência.
+O cli implementado possui alguns parâmetros de execução que são descritos utilizando o comando:
 
-### Parte 1 (Básico) - limite 40 caracteres
-Você deve seguir o exemplo de output [deste arquivo](https://github.com/idwall/desafios/blob/master/strings/output_parte1.txt), onde basta o texto possuir, no máximo, 40 caracteres por linha. As palavras não podem ser quebradas no meio.
+    python main.py -h
 
-### Parte 2 (Intermediário) - limite 40 caracteres
-O exemplo de output está [neste arquivo](https://github.com/idwall/desafios/blob/master/strings/output-parte2.txt), onde além de o arquivo possuir, no máximo, 40 caracteres por linha, o texto deve estar **justificado**.
+Abaixo a saída da descrição:
 
-### Dicas
-- Existe um template para projetos em Java ;)
+    usage: main.py [-h] [--line-size LINE_SIZE] [--justify] --input-file
+               INPUT_FILE [--output-file OUTPUT_FILE]
 
-### Extras
+    Efetua a formatação do arquivo informado seguindo a parametrização fornecida.
+    Por padrão o script usa o tamanho máximo da linha de 40 caracteres, não
+    justifica o texto e imprime o resultado na saída padrão.
+    
+    optional arguments:
+      -h, --help            show this help message and exit
+      --line-size LINE_SIZE
+                            Tamanho máximo da linha.
+      --justify             Aplica a formatação justificada ao texto de entrada.
+      --input-file INPUT_FILE
+                            Arquivo contendo o texto para formatação.
+      --output-file OUTPUT_FILE
+                            Arquivo de saída para o texto formatado.
 
-- Parametrização da quantidade de caracteres por linha.
+
+O controle dos parâmetros do script foi feito utilizando a lib argparser.
+
+Abaixo alguns exemplos de utilização:
+
+    # Gerar o texto formatado com tamanho máximo de linhas de 40 caracteres
+    # utilizando o arquivo de exemplo contido no repositório
+    python main.py --input-file input.txt
+    
+    # Gerar o texto formatado com o tamanho máximo da linha em 60 caracteres e justificado
+    python main.py --input-file input.txt --line-size 60 --justify
+    
+    # Gerar o texto formatado justificado e escreve-lo no arquivo saida.txt
+    python main.py --input-file input.txt --justify --output-file saida.txt
+
