@@ -2,7 +2,10 @@ import argparse
 
 
 class SubredditsAction(argparse.Action):
-
+    """
+    Ação customizada do argparser para gerar a lista de subreddits
+    automaticamente
+    """
     def __init__(self, option_strings, dest, nargs=None, **kwargs):
         if nargs is not None:
             raise ValueError("nargs not allowed")

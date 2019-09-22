@@ -1,2 +1,4 @@
 .idea/
 *.pyc
+nada-pra-fazer-sls/.serverless/
+nada-pra-fazer-sls/layer/python/

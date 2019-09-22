@@ -1,0 +1,47 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: nada-pra-fazer-sls
+
+provider:
+  name: aws
+  runtime: python3.7
+  memorySize: 128
+  timeout: 20
+  versionFunctions: false
+  environment:
+    bot_id: ${env:BOT_ID}
+    expected_token: ${env:TOKEN}
+
+
+package:
+  exclude:
+    - layer/**
+
+
+functions:
+  nadaprafazer_post:
+    handler: handlers.nadaprafazer.post
+    layers:
+      - ${env:LAYER}
+    events:
+      - http:
+          path: /nadaprafazer/{token}
+          method: POST
+          private: false
+          request:
+            parameters:
+              paths:
+                token: true
+
+
